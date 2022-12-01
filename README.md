@@ -5,10 +5,8 @@ The Melt Evolution assets provide users with tools to conduct melt pond classifi
 
 $$NDWI=\frac{Green-NIR}{Green+NIR} $$
 <p align="center">
-  <figure>
-    <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/205079295-0835948f-f8ea-4abb-a386-55f2bf6ea614.png">
-    <figcaption>Classification of Sentinel-2 imagery...</figcaption>
-  </figure>
+  <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/205079295-0835948f-f8ea-4abb-a386-55f2bf6ea614.png">
+  <figcaption>Classification of Sentinel-2 imagery...</figcaption>
 </p>
 
 
