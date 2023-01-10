@@ -43,6 +43,8 @@ products = api.query(footprint,
                      cloudcoverpercentage=(0, 10)) # Cloud cover paramters can be changed based on user preference
 ```
 
+For additional details, please refer to the Sentinelsat documentation: https://sentinelsat.readthedocs.io/en/stable/.
+
 ### 2. S2_FileUnzipAndMove
 
 ## Examples
