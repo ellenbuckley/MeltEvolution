@@ -33,7 +33,15 @@ This GitHub repository features 5 scripts provided in the Jupyter Notebook forma
 
 ### 1. Sentinel-API_Query 
 
-This script provides users with Sentinel-2 data acquisition. This program retrieves imagery over a user-defined region (geojson) using the Sentinel API. To access the imagery, users will have to create an account through the Sentinel Open Access Hub. Once login credentials have been obtained, users can enter these details inside the script. 
+This script provides users with Sentinel-2 data acquisition. This program retrieves imagery over a user-defined region (geojson) using the Sentinel API. To access the imagery, users will have to create an account through the Sentinel Open Access Hub. Users can change download parameters such as regions, dates, instruments, products, and cloud cover as needed.
+
+'''python
+products = api.query(footprint,
+                     date=('20200901', date(2020, 9, 4)), # Note differences in date format 
+                     platformname='Sentinel-2',
+                     producttype='S2MSI1C',
+                     cloudcoverpercentage=(0, 10)) # Cloud cover paramters can be changed based on user preference
+'''
 
 ### 2. S2_FileUnzipAndMove
 
