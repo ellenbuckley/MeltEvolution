@@ -47,6 +47,14 @@ For additional details, please refer to the Sentinelsat documentation: https://s
 
 ### 2. S2_FileUnzipAndMove
 
+Downloads from the Sentinel-API are provided as .zip files with various sub-directories including imagery files (.jp2) and ancillary data. These downloads include all 13 bands from the Sentinel-2 instruments including an additional 'TCI' (True Color Image) file (14 total files). The melt pond classification only requires 4 bands: B02 (Red), B03 (Green), B04 (Blue), B08 (NIR). To process these bands, the 'S2_FileUnzipAndMove' script programatically unzips files and retrieves the relevant bands into individual directories. This script includes processing for the TCI files for users who may wish to verify classification results with the corresponding optical scene. Users who do not require TCI composites may simply remove the 'TCI' phrase in the iterated lists within the script.    
+
+### 3. S2_Classification
+
+### 4. S2_Results_Analysis
+
+### 5. UsefulAssets
+
 ## Examples
 
 ### Acknowledgements 
