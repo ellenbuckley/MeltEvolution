@@ -20,8 +20,8 @@ The melt-pond classification assets are broken into several scripts to aid users
 
 1. Reading in land masks to remove land pixels.
 2. Removing image border pixels.
-3. Seperating pixels between water and not water.
-4. Determining ice pixels.
+3. Determining ice pixels.
+4. Determining water pixels.
 5. Seperating open water and melt pond pixels.
 6. Combining results into an HDF output.
 
