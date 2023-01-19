@@ -83,7 +83,7 @@ The 'UsefulAssets' notebook contains 3 functions which may aid users in comparin
 Conversion assets (1. and 2.) run off of GDAL tools. Coordinate extents may differ for users depending on their preferred GIS and the following figure has been provided to aid users in finding the correct order for extents.
 
 <p align="center">
-  <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213551632-c694edcc-e815-43ce-9bb1-740cc353bb02.jpeg">
+  <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213551632-c694edcc-e815-43ce-9bb1-740cc353bb02.jpeg">
     <br>
     <em>Fig 4. Order of spatial extent coordinates for projection conversion. </em>
 </p>
