@@ -68,7 +68,7 @@ This notebook reads in the results file, 'results.txt', created in the S2_Classi
 <p align="center">
   <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213509347-0af37a46-20a4-46c2-94e3-086c3ab1f8c6.png">
     <br>
-    <em>Fig #. QED. </em>
+    <em>Fig #. Melt Pond Fraction (MPF) statistical outputs. </em>
 </p>
 
 
