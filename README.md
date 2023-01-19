@@ -45,17 +45,17 @@ products = api.query(footprint,
 
 For additional details, please refer to the Sentinelsat documentation: https://sentinelsat.readthedocs.io/en/stable/.
 
-### 2. S2_FileUnzipAndMove
+### 2. [S2_FileUnzipAndMove](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_FileUnzipAndMove.ipynb)
 
 Downloads from the Sentinel-API are provided as .zip files with various sub-directories including imagery files (.jp2) and ancillary data. These downloads include all 13 bands from the Sentinel-2 instruments including an additional 'TCI' (True Color Image) file (14 total files). The melt pond classification only requires 4 bands: B02 (Red), B03 (Green), B04 (Blue), B08 (NIR). To process these bands, the 'S2_FileUnzipAndMove' script programatically unzips files and retrieves the relevant bands into individual directories. This script includes processing for the TCI files for users who may wish to verify classification results with the corresponding optical scene. Users who do not require TCI composites may simply remove the 'TCI' phrase in the iterated lists within the script.    
 
-### 3. S2_Classification
+### 3. [S2_Classification](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Classification.ipynb)
 
 The image classifcation script processes Sentinel-2 tiles and classifies them following the algorithm described in Buckley et al. (2020, 2023). First, the land is masked from the Sentinel-2 tiles border identified. Next, the image enters the classifcation routine. The first step separates non-water and water pixels utilizing the knowledge that water is much more absorptive in infrared wavelengths than non water pixels. From here, the non-water pixels are classified as either "ice" or "other." The "other" category includes mixed pixels, or pixels containing more than one surface type, and other surfaces that are not very absorptive in the infrared and not as bright as ice in the red channel, e.g. newly formed ice. The pixels identified as water, are separated into open water and melt pond categories depending on their brightness in the blue channel. Melt ponds are lighter in color with higher reflectance values in the blue channel than open water. A full description of the algorithm with figures demonstrating each step can be found in Buckley et al., 2020. The addition of the near infrared channel into the analysis is discussed in Buckley et al., 2023.
 
 The count of the number of pixels in each cateogry is logged to a text file ('results.txt'). The errors and warnings are recorded in a log file ('errorlog.txt'). An array, the shape of the Sentinel-2, records classification values for each pixel where 0= border/land, 1= ice, 2= open water, 3= melt pond, 4= other. This mask is saved to an hdf file, with other attributes including the sea ice concentration (SIC) and melt pond fraction (MPF) for the tile. The hdf5 file is stored in a separate folder 'classification_hdf' that will be created if it does not exist. The 'UsefulAssets' notebook has a tool (xxx) that converts this hdf file to a georeferenced figure.  
 
-### 4. S2_Results_Analysis
+### 4. [S2_Results_Analysis](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Results_Analysis.ipynb)
 
 This notebook reads in the results file, 'results.txt', created in the S2_Classification notebook. The text file is read into a pandas dataframe and new columns are added that calculate MPF and SIC. We create a day of year "DOY" column for easy plotting. Then we show an example of a way to look at the parameters. We plot MPF versus time showing the five-day running statistics including median and interquartile range.
 
