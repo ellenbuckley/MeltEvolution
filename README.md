@@ -49,6 +49,12 @@ For additional details, please refer to the Sentinelsat documentation: https://s
 
 Downloads from the Sentinel-API are provided as .zip files with various sub-directories including imagery files (.jp2) and ancillary data. These downloads include all 13 bands from the Sentinel-2 instruments including an additional 'TCI' (True Color Image) file (14 total files). The melt pond classification only requires 4 bands: B02 (Red), B03 (Green), B04 (Blue), B08 (NIR). To process these bands, the 'S2_FileUnzipAndMove' script programatically unzips files and retrieves the relevant bands into individual directories. This script includes processing for the TCI files for users who may wish to verify classification results with the corresponding optical scene. Users who do not require TCI composites may simply remove the 'TCI' phrase in the iterated lists within the script.    
 
+<p align="center">
+  <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213506808-db92fdf6-11f4-4e21-84ad-6ae7a03faa59.png">
+    <br>
+    <em>Users who do not require the 'TCI' complex may remove this keyword argument in the script. </em>
+</p>
+
 ### 3. [S2_Classification](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Classification.ipynb)
 
 The image classifcation script processes Sentinel-2 tiles and classifies them following the algorithm described in Buckley et al. (2020, 2023). First, the land is masked from the Sentinel-2 tiles border identified. Next, the image enters the classifcation routine. The first step separates non-water and water pixels utilizing the knowledge that water is much more absorptive in infrared wavelengths than non water pixels. From here, the non-water pixels are classified as either "ice" or "other." The "other" category includes mixed pixels, or pixels containing more than one surface type, and other surfaces that are not very absorptive in the infrared and not as bright as ice in the red channel, e.g. newly formed ice. The pixels identified as water, are separated into open water and melt pond categories depending on their brightness in the blue channel. Melt ponds are lighter in color with higher reflectance values in the blue channel than open water. A full description of the algorithm with figures demonstrating each step can be found in Buckley et al., 2020. The addition of the near infrared channel into the analysis is discussed in Buckley et al., 2023.
