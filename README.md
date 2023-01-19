@@ -65,6 +65,13 @@ The count of the number of pixels in each cateogry is logged to a text file ('re
 
 This notebook reads in the results file, 'results.txt', created in the S2_Classification notebook. The text file is read into a pandas dataframe and new columns are added that calculate MPF and SIC. We create a day of year "DOY" column for easy plotting. Then we show an example of a way to look at the parameters. We plot MPF versus time showing the five-day running statistics including median and interquartile range.
 
+<p align="center">
+  <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213509347-0af37a46-20a4-46c2-94e3-086c3ab1f8c6.png">
+    <br>
+    <em>Fig #. QED. </em>
+</p>
+
+
 ### 5. UsefulAssets
 
 ## Examples
