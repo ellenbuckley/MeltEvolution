@@ -31,7 +31,7 @@ Examples of these processing steps will be provided in the subsequent 'Examples'
 
 This GitHub repository features 5 scripts provided in the Jupyter Notebook format. Each script handles a specific function in the processing stream. Users should run each script in the order provided below.
 
-### 1. [Sentinel-API_Query] (MeltEvolution/Sentinel-API_Query.ipynb) 
+### 1. [Sentinel-API_Query] (https://github.com/JaeminEun/MeltEvolution/blob/main/Sentinel-API_Query.ipynb) 
 
 This script provides users with Sentinel-2 data acquisition. This program retrieves imagery over a user-defined region (geojson) using the Sentinel API. To access the imagery, users will have to create an account through the Sentinel Open Access Hub. Users can change download parameters such as regions, dates, instruments, products, and cloud cover as needed.
 
