@@ -52,7 +52,7 @@ Downloads from the Sentinel-API are provided as .zip files with various sub-dire
 <p align="center">
   <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213506808-db92fdf6-11f4-4e21-84ad-6ae7a03faa59.png">
     <br>
-    <em>Users who do not require the 'TCI' complex may remove this keyword argument in the script. </em>
+    <em>Fig 2. Users who do not require the 'TCI' complex may remove this keyword argument in the script. </em>
 </p>
 
 ### 3. [S2_Classification](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Classification.ipynb)
