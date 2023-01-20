@@ -114,6 +114,14 @@ The *'S2_Classification'* script stages outputs in an HDF file. The HDF files in
     <em>Fig 7. HDF classification results with variable descriptions. </em>
 </p>
 
+HDF outputs that have been georefferenced can be easily viewed within a GIS. The following is an example classification.
+
+<p align="center">
+  <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213785477-4ecc4fbe-d882-4a55-bd75-fb8f3a624bc5.jpg">
+    <br>
+    <em>Fig 8. Classification results converted to .tif format overlaid on the corresponding Sentinel-2 TCI complex. This classification features landmasking and only includes results in regions of sea-ice. </em>
+</p>
+
 ### 4. Mosaicking Classifications and Imagery
 
 ### Acknowledgements 
