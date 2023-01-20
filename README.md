@@ -132,5 +132,8 @@ HDF outputs that have been georefferenced can be easily viewed within a GIS. The
 
 ### Acknowledgements 
 
+This study is supported under NASA Cryosphere Program Grants 80NSSC17K0006, 80NSSC20K0966 and 80NSSC22K0815 (PI: Sinéad Farrell) and by the U.S. National Aeronautics and Space Administration (NASA) Earth Sciences Division under awards 80NSSC20K0975, 80NSSC22K1155, 80NSSC18K1439 and NNX17AG75G (PI: Ute Herzfeld). We acknowledges support from NASA’s New Investigator Program in Earth Science (80NSSC20K0658) and  the National Science Foundation (2138786) (PI: Melinda Webster). WorldView geospatial support for this work provided by the Polar Geospatial Center under NSF-OPP awards 1043681 and 1559691.
+
 ### References
 Buckley, E. M., Farrell, S. L., Duncan, K., Connor, L. N., Kuhn, J. M., & Dominguez, R. T. (2020). Classification of sea ice summer melt features in high‐resolution IceBridge imagery. Journal of Geophysical Research: Oceans, 125(5), e2019JC015738. https://doi.org/10.1029/2019JC015738
+Buckley, E. M., Farrell, S. L., Herzfeld, U. C., Webster, M., Trantow, T., Baney, O. N., Duncan, K., Han, H., Lawson, M. (2023). Observing the Evolution of Summer Melt on Multiyear Sea Ice with ICESat-2 and Sentinel-2 [Manuscript in Preparation]. 
