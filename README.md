@@ -94,6 +94,14 @@ Conversion assets (1. and 2.) run off of GDAL tools. Coordinate extents may diff
 
 ### 1. Text File Outputs
 
+Numerical results from the classification script are logged as .txt files. These files are then passed into the *'S2_Results_Analysis'* script where key metrics such as Melt Pond Fraction (MPF) and Sea Ice Concentration (SIC) are calculated. 
+
+<p align="center">
+  <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213793942-cfe4fe68-8308-4d56-9df5-875e779b1173.png">
+    <br>
+    <em>Fig 5. Text file output from the classification script. </em>
+</p>
+
 ### 2. MPF/SIC CSV Output Metrics
 
 The *'S2_Results_Analysis'* script passes the previous .txt file into pandas dataframes and produces calculations of key metrics from the melt pond classification. Metrics are broken by pixel counts of specific classes as well as percent content of Melt Pond Fraction (MPF) and Sea Ice Concentration (SIC).
@@ -121,8 +129,6 @@ HDF outputs that have been georefferenced can be easily viewed within a GIS. The
     <br>
     <em>Fig 8. Classification results converted to .tif format overlaid on the corresponding Sentinel-2 TCI complex. This classification features landmasking and only includes results in regions of sea-ice. </em>
 </p>
-
-### 4. Mosaicking Classifications and Imagery
 
 ### Acknowledgements 
 
