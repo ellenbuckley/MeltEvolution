@@ -99,9 +99,9 @@ Conversion assets (1. and 2.) run off of GDAL tools. Coordinate extents may diff
 The *'S2_Results_Analysis'* script passes the previous .txt file into pandas dataframes and produces calculations of key metrics from the melt pond classification. 
 
 <p align="center">
-  <img width="717" alt="image" src="https://user-images.githubusercontent.com/61250972/213751846-f0494c78-f9bc-4aba-aa9d-35941a0510ad.png">
+  <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213751846-f0494c78-f9bc-4aba-aa9d-35941a0510ad.png">
     <br>
-    <em>Fig 6. Example of MPF/SIC metrics processed as a .csv file. </em>
+    <em>Fig 6. Example of MPF/SIC metrics processed as a .csv file. Metrics are broken by pixel counts of specific classes as well as percent content of Melt Pond Fraction (MPF) and Sea Ice Concentration (SIC). </em>
 </p>
 
 ### 3. HDF Classifications
