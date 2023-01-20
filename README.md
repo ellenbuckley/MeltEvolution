@@ -104,7 +104,7 @@ The *'S2_Results_Analysis'* script passes the previous .txt file into pandas dat
     <em>Fig 6. Example of MPF/SIC metrics processed as a .csv file. </em>
 </p>
 
-### 3. HDF Classifications
+### 3. Classification Outputs
 
 The *'S2_Classification'* script stages outputs in an HDF file. The HDF files include descriptions of key variables as well as brief summary metrics. 
 
