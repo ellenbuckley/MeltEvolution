@@ -96,15 +96,23 @@ Conversion assets (1. and 2.) run off of GDAL tools. Coordinate extents may diff
 
 ### 2. MPF/SIC CSV Output Metrics
 
-The *'S2_Results_Analysis'* script passes the previous .txt file into pandas dataframes and produces calculations of key metrics from the melt pond classification. 
+The *'S2_Results_Analysis'* script passes the previous .txt file into pandas dataframes and produces calculations of key metrics from the melt pond classification. Metrics are broken by pixel counts of specific classes as well as percent content of Melt Pond Fraction (MPF) and Sea Ice Concentration (SIC).
 
 <p align="center">
   <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213751846-f0494c78-f9bc-4aba-aa9d-35941a0510ad.png">
     <br>
-    <em>Fig 6. Example of MPF/SIC metrics processed as a .csv file. Metrics are broken by pixel counts of specific classes as well as percent content of Melt Pond Fraction (MPF) and Sea Ice Concentration (SIC). </em>
+    <em>Fig 6. Example of MPF/SIC metrics processed as a .csv file. </em>
 </p>
 
 ### 3. HDF Classifications
+
+The *'S2_Classification'* script stages outputs in an HDF file. The HDF files include descriptions of key variables as well as brief summary metrics. 
+
+<p align="center">
+  <img width="900" alt="image" src="https://user-images.githubusercontent.com/61250972/213754758-4e5fb5f7-d674-46d1-8228-4cd74a5f4bbb.png">
+    <br>
+    <em>Fig 7. HDF classification results with variable descriptions. </em>
+</p>
 
 ### 4. Mosaicking Classifications and Imagery
 
