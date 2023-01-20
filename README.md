@@ -136,4 +136,5 @@ This study is supported under NASA Cryosphere Program Grants 80NSSC17K0006, 80NS
 
 ### References
 Buckley, E. M., Farrell, S. L., Duncan, K., Connor, L. N., Kuhn, J. M., & Dominguez, R. T. (2020). Classification of sea ice summer melt features in high‐resolution IceBridge imagery. Journal of Geophysical Research: Oceans, 125(5), e2019JC015738. https://doi.org/10.1029/2019JC015738
+
 Buckley, E. M., Farrell, S. L., Herzfeld, U. C., Webster, M., Trantow, T., Baney, O. N., Duncan, K., Han, H., Lawson, M. (2023). Observing the Evolution of Summer Melt on Multiyear Sea Ice with ICESat-2 and Sentinel-2 [Manuscript in Preparation]. 
