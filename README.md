@@ -7,7 +7,7 @@
 
 <img align="right" width="120" height="120" alt="image" src="https://user-images.githubusercontent.com/61250972/211591458-e8dac618-5ecf-4fc2-8d6c-edb28ea3e280.png">
 
-The Melt Evolution assets provide users with tools to conduct melt pond classification based on Sentinel-2 imagery using  a Python framework. The code and results of this project are a result of *insert inforamtion about paper here* (Buckley et al., 2023). Previous methods (Buckley et al., 2020) were adjusted to include the near infrared (NIR) channel to further distinguish water and ice using the Normalized Difference Water Index (NDWI). 
+The Melt Evolution assets provide users with tools to conduct melt pond classification based on Sentinel-2 imagery using  a Python framework. The code and results of this project are a result of "Observing the Evolution of Summer Melt on Multiyear Sea Ice with ICESat-2 and Sentinel-2" (Buckley et al., 2023). Previous methods (Buckley et al., 2020) were adjusted to include the near infrared (NIR) channel to further distinguish water and ice using the Normalized Difference Water Index (NDWI). 
 
 $$NDWI=\frac{Green-NIR}{Green+NIR} $$
 <p align="center">
