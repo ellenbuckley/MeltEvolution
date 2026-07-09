@@ -32,21 +32,27 @@ Examples of these processing steps will be provided in the subsequent 'Examples'
 
 This GitHub repository features 5 scripts provided in the Jupyter Notebook format. Each script handles a specific function in the processing stream. Users should run each script in the order provided below.
 
-### 1. [Sentinel-API_Query](https://github.com/JaeminEun/MeltEvolution/blob/main/Sentinel-API_Query.ipynb) 
+### 1. [Sentinel-API_Query](https://github.com/ellenbuckley/MeltEvolution/blob/main/Sentinel-API_Query.ipynb) 
 
-This script provides users with Sentinel-2 data acquisition. This program retrieves imagery over a user-defined region (geojson) using the Sentinel API. To access the imagery, users will have to create an account through the Sentinel Open Access Hub. Users can change download parameters such as regions, dates, instruments, products, and cloud cover as needed.
+This script provides users with Sentinel-2 data acquisition. This program retrieves imagery over a user-defined region (geojson) using the Copernicus Data Space Ecosystem (CDSE) OData API. To access the imagery, users will have to create a free account at [dataspace.copernicus.eu](https://dataspace.copernicus.eu). Users can change download parameters such as regions, dates, instruments, products, and cloud cover as needed.
+
+> **Note:** This script previously queried the Copernicus Open Access Hub (`scihub.copernicus.eu`) via the `sentinelsat` package. That hub was shut down in 2023 and `sentinelsat` was archived in October 2025, so the old query no longer works. The script now queries the Copernicus Data Space Ecosystem directly instead, and requires a CDSE account rather than a Sentinel Open Access Hub account.
 
 ```python
-products = api.query(footprint,
-                     date=('20200901', date(2020, 9, 4)), # Note differences in date format 
-                     platformname='Sentinel-2',
-                     producttype='S2MSI1C',
-                     cloudcoverpercentage=(0, 10)) # Cloud cover paramters can be changed based on user preference
+query_filter = (
+    "Collection/Name eq 'SENTINEL-2' "
+    "and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' "
+    "and att/OData.CSC.StringAttribute/Value eq 'S2MSI1C') "
+    "and Attributes/OData.CSC.DoubleAttribute/any(att:att/Name eq 'cloudCover' "
+    "and att/OData.CSC.DoubleAttribute/Value le 10) "  # Cloud cover parameter can be changed based on user preference
+    "and OData.CSC.Intersects(area=geography'SRID=4326;<your footprint WKT>') "
+    "and ContentDate/Start gt 2020-09-01T00:00:00.000Z and ContentDate/Start lt 2020-09-04T00:00:00.000Z"  # Note CDSE's ISO 8601 date format
+)
 ```
 
-For additional details, please refer to the Sentinelsat documentation: https://sentinelsat.readthedocs.io/en/stable/.
+For additional details, please refer to the CDSE API documentation: https://documentation.dataspace.copernicus.eu/APIs/OData.html.
 
-### 2. [S2_FileUnzipAndMove](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_FileUnzipAndMove.ipynb)
+### 2. [S2_FileUnzipAndMove](https://github.com/ellenbuckley/MeltEvolution/blob/main/S2_FileUnzipAndMove.ipynb)
 
 Downloads from the Sentinel-API are provided as .zip files with various sub-directories including imagery files (.jp2) and ancillary data. These downloads include all 13 bands from the Sentinel-2 instruments including an additional 'TCI' (True Color Image) file (14 total files). The melt pond classification only requires 4 bands: B02 (Red), B03 (Green), B04 (Blue), B08 (NIR). To process these bands, the 'S2_FileUnzipAndMove' script programatically unzips files and retrieves the relevant bands into individual directories. This script includes processing for the TCI files for users who may wish to verify classification results with the corresponding optical scene. Users who do not require TCI composites may simply remove the 'TCI' phrase in the iterated lists within the script.    
 
@@ -56,13 +62,13 @@ Downloads from the Sentinel-API are provided as .zip files with various sub-dire
     <em>Fig 2. Users who do not require the 'TCI' complex may remove this keyword argument in the script. </em>
 </p>
 
-### 3. [S2_Classification](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Classification.ipynb)
+### 3. [S2_Classification](https://github.com/ellenbuckley/MeltEvolution/blob/main/S2_Classification.ipynb)
 
 The image classifcation script processes Sentinel-2 tiles and classifies them following the algorithm described in Buckley et al. (2020, 2023). First, the land is masked from the Sentinel-2 tiles border identified. Next, the image enters the classifcation routine. The first step separates non-water and water pixels utilizing the knowledge that water is much more absorptive in infrared wavelengths than non water pixels. From here, the non-water pixels are classified as either "ice" or "other." The "other" category includes mixed pixels, or pixels containing more than one surface type, and other surfaces that are not very absorptive in the infrared and not as bright as ice in the red channel, e.g. newly formed ice. The pixels identified as water, are separated into open water and melt pond categories depending on their brightness in the blue channel. Melt ponds are lighter in color with higher reflectance values in the blue channel than open water. A full description of the algorithm with figures demonstrating each step can be found in Buckley et al., 2020. The addition of the near infrared channel into the analysis is discussed in Buckley et al., 2023.
 
 The count of the number of pixels in each cateogry is logged to a text file ('results.txt'). The errors and warnings are recorded in a log file ('errorlog.txt'). An array, the shape of the Sentinel-2, records classification values for each pixel where 0= border/land, 1= ice, 2= open water, 3= melt pond, 4= other. This mask is saved to an hdf file, with other attributes including the sea ice concentration (SIC) and melt pond fraction (MPF) for the tile. The hdf5 file is stored in a separate folder 'classification_hdf' that will be created if it does not exist. The 'UsefulAssets' notebook has a tool (1. Assigning projection information for classified HDF files) that converts this hdf file to a georeferenced figure.  
 
-### 4. [S2_Results_Analysis](https://github.com/JaeminEun/MeltEvolution/blob/main/S2_Results_Analysis.ipynb)
+### 4. [S2_Results_Analysis](https://github.com/ellenbuckley/MeltEvolution/blob/main/S2_Results_Analysis.ipynb)
 
 This notebook reads in the results file, 'results.txt', created in the S2_Classification notebook. The text file is read into a pandas dataframe and new columns are added that calculate MPF and SIC. We create a day of year "DOY" column for easy plotting. Then we show an example of a way to look at the parameters. We plot MPF versus time showing the five-day running statistics including median and interquartile range.
 
@@ -73,7 +79,7 @@ This notebook reads in the results file, 'results.txt', created in the S2_Classi
 </p>
 
 
-### 5. [UsefulAssets](https://github.com/JaeminEun/MeltEvolution/blob/main/UsefulAssets.ipynb)
+### 5. [UsefulAssets](https://github.com/ellenbuckley/MeltEvolution/blob/main/UsefulAssets.ipynb)
 
 The 'UsefulAssets' notebook contains 3 functions which may aid users in comparing classification outputs as well as verifying results.
 
@@ -134,6 +140,8 @@ HDF outputs that have been georefferenced can be easily viewed within a GIS. The
 ### Acknowledgements 
 
 This study is supported under NASA Cryosphere Program Grants 80NSSC17K0006, 80NSSC20K0966 and 80NSSC22K0815 (PI: Sinéad Farrell) and by the U.S. National Aeronautics and Space Administration (NASA) Earth Sciences Division under awards 80NSSC20K0975, 80NSSC22K1155, 80NSSC18K1439 and NNX17AG75G (PI: Ute Herzfeld). We acknowledges support from NASA’s New Investigator Program in Earth Science (80NSSC20K0658) and  the National Science Foundation (2138786) (PI: Melinda Webster). WorldView geospatial support for this work provided by the Polar Geospatial Center under NSF-OPP awards 1043681 and 1559691.
+
+Thank you to Isolde Glissenaar (University of Tromsø) for pointing out discrepancies between the code and the published classification method, and to Wes Moses (U.S. Naval Research Lab) for flagging the deprecation of the Copernicus Open Access Hub API. Also thank you to Jaemin Eun who organized all the scripts and put this repo together in the first place.
 
 ### References
 Buckley, E. M., Farrell, S. L., Duncan, K., Connor, L. N., Kuhn, J. M., & Dominguez, R. T. (2020). Classification of sea ice summer melt features in high‐resolution IceBridge imagery. Journal of Geophysical Research: Oceans, 125(5), e2019JC015738. https://doi.org/10.1029/2019JC015738
